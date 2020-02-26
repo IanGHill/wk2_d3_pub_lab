@@ -12,9 +12,9 @@ class PubTest < MiniTest::Test
 
   def setup
 
-    @Guinness = Drink.new("Guinness", 4, 4)
-    @Gordons = Drink.new("Gordons", 3, 5)
-    @Tennants = Drink.new("Tennants", 4, 4)
+    @Guinness = Drink.new("Guinness", 4, 4, 109)
+    @Gordons = Drink.new("Gordons", 3, 5, 24)
+    @Tennants = Drink.new("Tennants", 4, 4, 111)
 
     @drinks = [@Guinness, @Gordons, @Tennants]
 
@@ -49,6 +49,7 @@ class PubTest < MiniTest::Test
     @Chanter.customer_buys_drink(@Ian, @Guinness)
     assert_equal(104, @Chanter.till)
     assert_equal(46, @Ian.wallet)
+    assert_equal(108, @Guinness.stock_level)
   end
 
   def test_customer_buys_drink__below_age
@@ -82,4 +83,9 @@ class PubTest < MiniTest::Test
     assert_equal(16, @Boaab.wallet)
     assert_equal(72, @Boaab.drunkenness)
   end
+
+  def test_stock_value
+    assert_equal(952, @Chanter.stock_value)
+  end
+
 end

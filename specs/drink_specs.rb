@@ -7,11 +7,22 @@ require_relative("../drink")
 class DrinkTest < MiniTest::Test
 
   def setup
-    @Guinness = Drink.new("Guinness", 4, 4)
-    @Gordons = Drink.new("Gordons", 3, 5)
-    @Tennants = Drink.new("Tennants", 4, 4)
+    @Guinness = Drink.new("Guinness", 4, 4, 109)
+    @Gordons = Drink.new("Gordons", 3, 5, 24)
+    @Tennants = Drink.new("Tennants", 4, 4, 111)
 
     @drinks = [@Guinness, @Gordons, @Tennants]
+
+=begin
+@stock = { @cellar = [@Guinness, @Gordons, @Tennants]
+          quanrirty :80
+        }
+
+
+=end
+
+
+
   end
 
   def test_get_drink__name
@@ -20,5 +31,9 @@ class DrinkTest < MiniTest::Test
 
   def test_get_drink_price
     assert_equal(3, @Gordons.price)
+  end
+
+  def test_get_stock_level
+    assert_equal(111, @Tennants.stock_level)
   end
 end
